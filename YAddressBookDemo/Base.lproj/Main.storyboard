@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--通讯录-->
@@ -44,11 +45,24 @@
                             <outlet property="delegate" destination="zS6-ho-fAb" id="fCW-Rw-f89"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="通讯录" id="NAL-S0-Di9"/>
+                    <navigationItem key="navigationItem" title="通讯录" id="NAL-S0-Di9">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="mtt-hf-Y8m">
+                                <connections>
+                                    <action selector="pushToNewPersonViewController:" destination="zS6-ho-fAb" id="dgL-OD-5zZ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="PK" id="pQj-hM-rFe">
+                                <connections>
+                                    <action selector="pushPickerPersonViewController:" destination="zS6-ho-fAb" id="SOO-Rw-qjE"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2AZ-JM-5i1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="101" y="-115"/>
+            <point key="canvasLocation" x="73" y="-145"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CCD-Wc-Xzq">

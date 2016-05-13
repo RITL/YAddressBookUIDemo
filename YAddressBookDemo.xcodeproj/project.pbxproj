@@ -20,6 +20,7 @@
 		DB3DBF691CDC823800C732CA /* YContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3DBF681CDC823800C732CA /* YContactsManager.m */; };
 		DB3DBF6C1CDC956E00C732CA /* YContactObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3DBF6B1CDC956E00C732CA /* YContactObjectManager.m */; };
 		DB93135B1CE02BC500A2C2F4 /* YContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB93135A1CE02BC500A2C2F4 /* YContactsTableViewController.m */; };
+		DBC96E6E1CE3008600CE51D0 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC96E6D1CE3008600CE51D0 /* AddressBookUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		DB3DBF6B1CDC956E00C732CA /* YContactObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YContactObjectManager.m; sourceTree = "<group>"; };
 		DB9313591CE02BC500A2C2F4 /* YContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YContactsTableViewController.h; sourceTree = "<group>"; };
 		DB93135A1CE02BC500A2C2F4 /* YContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YContactsTableViewController.m; sourceTree = "<group>"; };
+		DBC96E6D1CE3008600CE51D0 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBC96E6E1CE3008600CE51D0 /* AddressBookUI.framework in Frameworks */,
 				DB3DBF5C1CDC678500C732CA /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +99,7 @@
 		DB3DBF1C1CDC677A00C732CA = {
 			isa = PBXGroup;
 			children = (
+				DBC96E6D1CE3008600CE51D0 /* AddressBookUI.framework */,
 				DB3DBF5B1CDC678500C732CA /* AddressBook.framework */,
 				DB3DBF271CDC677A00C732CA /* YAddressBookDemo */,
 				DB3DBF411CDC677A00C732CA /* YAddressBookDemoTests */,

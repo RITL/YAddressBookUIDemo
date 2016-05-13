@@ -43,6 +43,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)requestContactsComplete:(void (^)(NSArray <YContactObject *> *))completeBlock;
 
 
+@end
+
+
+
+
+
+
+
+/**
+ *  手动进行联系人数据添加类目
+ */
+@interface YContactsManager (YCodingHandle)
+
+
+- (void)codingAddPersonToAddressBook;
+
 
 @end
 

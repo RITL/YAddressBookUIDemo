@@ -42,6 +42,9 @@ static NSString * const YContactsManager;
     //初始化一个YContactObject对象
     YContactObject * contactObject = [[YContactObject alloc]init];
     
+    //KVC赋值
+    [contactObject setValue:[NSValue valueWithPointer:recordRef] forKey:@"recordRefValue"];
+    
     //姓名对象
     contactObject.nameObject = [self contactNameProperty];
     

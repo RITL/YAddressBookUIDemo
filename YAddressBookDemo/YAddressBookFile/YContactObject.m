@@ -9,6 +9,17 @@
 #import "YContactObject.h"
 
 #pragma mark - YContactObject
+
+@interface YContactObject ()
+
+/**
+ *  存放ABRecordRef属性的对象
+ */
+@property (nonatomic, strong)NSValue * recordRefValue;
+
+@end
+
+
 @implementation YContactObject
 
 
