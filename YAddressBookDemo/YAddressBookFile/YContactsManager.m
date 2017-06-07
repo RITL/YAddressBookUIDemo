@@ -188,7 +188,7 @@ void addressBookChangeCallBack(ABAddressBookRef addressBook, CFDictionaryRef inf
 - (void)requestAuthorizationStatus
 {
     //避免强引用
-    typeof(self) copy_self = [self copy];
+    __weak typeof(self) copy_self = self;
     
     ABAddressBookRequestAccessWithCompletion(self.addressBook, ^(bool granted, CFErrorRef error) {
        
