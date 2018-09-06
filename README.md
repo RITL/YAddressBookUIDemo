@@ -251,7 +251,7 @@ ABRecordSetValue(person, kABPersonBirthdayProperty, (__bridge CFTypeRef)([NSDate
     [newPersonView dismissViewControllerAnimated:true completion:^{}];
 }
 ```
-<br>
+
 ## ABUnknownPersonViewController(未知联系人的控制器)
 这个控制器刚开始接触的时候，完全有点不懂它的用处，明明有了ABNewPersonViewController，怎么还需要这个，后来发现，它还是有他的作用的，这里先不给大家看图，先看一下初始化的代码:
 ```Objective-C
@@ -304,7 +304,6 @@ shouldPerformDefaultActionForPerson:(ABRecordRef)person
 ```
 
 
-<br>
 ## ABPersonViewController(详细信息的控制器)
 
 这个控制器主要是用来显示联系人详细信息，不仅如此，还可以对联系人进行编辑，先上图来看看他的样式
@@ -332,7 +331,7 @@ shouldPerformDefaultActionForPerson:(ABRecordRef)person
 - (void)setHighlightedItemForProperty:(ABPropertyID)property
                        withIdentifier:(ABMultiValueIdentifier)identifier;
 ```
-<br>
+
 协议方法`<ABPersonViewControllerDelegate>`
 ```Objective-C
 /**
@@ -365,7 +364,7 @@ shouldPerformDefaultActionForPerson:(ABRecordRef)person
 }
 ```
 
-<br>
+
 ## ABPeoplePickerNavigationController(选择联系人的控制器)
 
 是顾名思义的一个选择控制器，因为是导航控制器，所以这里我选择的使用模态跳，直接来看看效果图吧:
