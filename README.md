@@ -5,22 +5,20 @@
 
 总结一下如何修改系统的通讯录吧。
 <br>
-#修改系统通讯录的方法
-##两种方法
+# 修改系统通讯录的方法
+## 两种方法
 
-  1.   通过`AddressBook.framework`的各种函数来完成对AddressBook的操作。
-  2.  通过`AddressBookUI.framework`中提供的系统UIViewController完成对AddressBook的操作，我们只需要使用这几个控制器，传入相应的参数并实现响应的协议方法就可以完成。
+  1. 通过`AddressBook.framework`的各种函数来完成对AddressBook的操作。
+  2. 通过`AddressBookUI.framework`中提供的系统UIViewController完成对AddressBook的操作，我们只需要使用这几个控制器，传入相应的参数并实现响应的协议方法就可以完成。
 
-##方法看法
+## 方法看法
 以上两种方法，初学者估计不会有人想用第一种，那么个人就来谈谈对这两种方法的看法:
 
- 1.    方法比较繁琐，需要一定量的代码来完成，适合自定义UI布局来完成，相对的比较灵活。
- 2.     仅需要弹出系统的控制器，传入相应的参数并实现协议方法，就可以完成对通讯录的操作，代码量较少，但UI会固定成系统通讯录的样式，用法简单但布局不灵活。
+ 1. 方法比较繁琐，需要一定量的代码来完成，适合自定义UI布局来完成，相对的比较灵活。
+ 2. 仅需要弹出系统的控制器，传入相应的参数并实现协议方法，就可以完成对通讯录的操作，代码量较少，但UI会固定成系统通讯录的样式，用法简单但布局不灵活。
 
-<br>
-<br>
-#通过AddressBook.framework实现
-##实例化对象
+# 通过AddressBook.framework实现
+## 实例化对象
 
 实例化一个需要添加的Person属性，当然，如果是修改，那么就获取该属性喽，怎么获取可是上一篇博文介绍的呢
 ```Objective-C
@@ -33,8 +31,8 @@ ABAddressBookRef addressBook = ABAddressBookCreate();
 //实例化一个CFErrorRef属性,如果实例化，下面的设置为NULL即可
 CFErrorRef error = NULL;
 ```
-<br>
-##修改联系人属性的方法
+
+## 修改联系人属性的方法
 ```Objective-C
 /**
 *   新增或修改(覆盖原值的过程)ABRecordRef中某个属性的方法
@@ -53,8 +51,8 @@ bool ABRecordSetValue(ABRecordRef record, ABPropertyID property, CFTypeRef value
 */
 bool ABRecordRemoveValue(ABRecordRef record, ABPropertyID property, CFErrorRef* error);
 ```
-<br>
-##修改通讯录的方法
+
+## 修改通讯录的方法
 ```Objective-C
 
 //添加联系人的方法
@@ -63,8 +61,8 @@ bool ABAddressBookAddRecord(ABAddressBookRef addressBook, ABRecordRef record, CF
 //删除联系人的方法
 bool ABAddressBookRemoveRecord(ABAddressBookRef addressBook, ABRecordRef record, CFErrorRef* erro);
 ```
-<br>
-##修改完毕
+
+## 修改完毕
 ```Objective-C
 //添加联系人
 if (ABAddressBookAddRecord(addressBook, person, &error) == true)
@@ -77,10 +75,10 @@ if (ABAddressBookAddRecord(addressBook, person, &error) == true)
 CFRelease(person);
 CFRelease(addressBook);
 ```
-<br>
-##具体实例
 
-###添加联系人的姓名属性
+## 具体实例
+
+### 添加联系人的姓名属性
 ```Objective-C
 
 /*添加联系人姓名属性*/
@@ -96,21 +94,21 @@ ABRecordSetValue(person, kABPersonMiddleNamePhoneticProperty,(__bridge CFStringR
 
 ```
 <br>
-###添加联系人类型属性
+### 添加联系人类型属性
 ```Objective-C
 /*添加联系人类型属性*/
 ABRecordSetValue(person, kABPersonKindProperty, kABPersonKindPerson, &error);      //设置为个人类型
 ABRecordSetValue(person, kABPersonKindProperty, kABPersonKindOrganization, &error);//设置为公司类型
 
 ```
-<br>
-###添加联系人头像属性
+
+### 添加联系人头像属性
 ```Objective-C
 /*添加联系人头像属性*/
 ABPersonSetImageData(person, (__bridge CFDataRef)(UIImagePNGRepresentation([UIImage imageNamed:@""])),&error);//设置联系人头像
 ```
-<br>
-###添加联系人电话信息
+
+### 添加联系人电话信息
 ```Objective-C
 /*添加联系人电话信息*/
 //实例化一个多值属性
@@ -143,16 +141,16 @@ ABRecordSetValue(person, kABPersonPhoneProperty, phoneMultiValue, &error);
 //释放资源
 CFRelease(phoneMultiValue);
 ```
-<br>
-###添加联系人的工作信息
+
+### 添加联系人的工作信息
 ```Objective-C
 /*添加联系人的工作信息*/
 ABRecordSetValue(person, kABPersonOrganizationProperty, (__bridge CFStringRef)@"OYue", &error);//公司(组织)名称
 ABRecordSetValue(person, kABPersonDepartmentProperty, (__bridge CFStringRef)@"DYue", &error);  //部门
 ABRecordSetValue(person, kABPersonJobTitleProperty, (__bridge CFStringRef)@"JYue", &error);    //职位
 ```
-<br>
-###添加联系人的邮件信息
+
+### 添加联系人的邮件信息
 ```Objective-C
 /*添加联系人的邮件信息*/
 //实例化多值属性
@@ -171,8 +169,8 @@ ABRecordSetValue(person, kABPersonEmailProperty, emailMultiValue, &error);
 //释放资源
 CFRelease(emailMultiValue);
 ```
-<br>
-###添加联系人的地址信息
+
+### 添加联系人的地址信息
 ```Objective-C
 /*添加联系人的地址信息*/
 //实例化多值属性
@@ -199,8 +197,8 @@ ABRecordSetValue(person, kABPersonAddressProperty, addressMultiValue, &error);
 //释放资源
 CFRelease(addressMultiValue);
 ```
-<br>
-###添加联系人的生日信息
+
+### 添加联系人的生日信息
 ```Objective-C
 //添加公历生日
 ABRecordSetValue(person, kABPersonBirthdayProperty, (__bridge CFTypeRef)([NSDate date]), &error);
@@ -208,10 +206,10 @@ ABRecordSetValue(person, kABPersonBirthdayProperty, (__bridge CFTypeRef)([NSDate
 
 常用的属性如上，其他的属性在此也就不多余了，就是一堆代码的重复，但所有的用法在上面的实例中也都已经给出，只需按照方法用即可。
 
-<br>
-#通过AddressBookUI.framwork实现
 
-##ABNewPersonViewController(添加联系人控制器)
+# 通过AddressBookUI.framwork实现
+
+## ABNewPersonViewController(添加联系人控制器)
 
 
 顾名思义，它就是用来新增加联系人的控制器，样式就是系统通讯录下的样式，如下:
@@ -254,7 +252,7 @@ ABRecordSetValue(person, kABPersonBirthdayProperty, (__bridge CFTypeRef)([NSDate
 }
 ```
 <br>
-##ABUnknownPersonViewController(未知联系人的控制器)
+## ABUnknownPersonViewController(未知联系人的控制器)
 这个控制器刚开始接触的时候，完全有点不懂它的用处，明明有了ABNewPersonViewController，怎么还需要这个，后来发现，它还是有他的作用的，这里先不给大家看图，先看一下初始化的代码:
 ```Objective-C
 //实例化一个person
@@ -307,7 +305,7 @@ shouldPerformDefaultActionForPerson:(ABRecordRef)person
 
 
 <br>
-##ABPersonViewController(详细信息的控制器)
+## ABPersonViewController(详细信息的控制器)
 
 这个控制器主要是用来显示联系人详细信息，不仅如此，还可以对联系人进行编辑，先上图来看看他的样式
 <br>
@@ -368,7 +366,7 @@ shouldPerformDefaultActionForPerson:(ABRecordRef)person
 ```
 
 <br>
-##ABPeoplePickerNavigationController(选择联系人的控制器)
+## ABPeoplePickerNavigationController(选择联系人的控制器)
 
 是顾名思义的一个选择控制器，因为是导航控制器，所以这里我选择的使用模态跳，直接来看看效果图吧:
 <br>
