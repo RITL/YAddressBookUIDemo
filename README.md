@@ -253,7 +253,9 @@ ABRecordSetValue(person, kABPersonBirthdayProperty, (__bridge CFTypeRef)([NSDate
 ```
 
 ## ABUnknownPersonViewController(未知联系人的控制器)
+
 这个控制器刚开始接触的时候，完全有点不懂它的用处，明明有了ABNewPersonViewController，怎么还需要这个，后来发现，它还是有他的作用的，这里先不给大家看图，先看一下初始化的代码:
+
 ```Objective-C
 //实例化一个person
 ABRecordRef person = ABPersonCreate();
@@ -284,7 +286,7 @@ CFRelease(person);
 初始化代码如上，那么再来看一下效果图:
 <div align="center"><img src="http://img.blog.csdn.net/20160512201721450" height="500"></img></div>
 
-<br>
+
 最后介绍一下他的协议方法，说实话，他的协议方法通过文档看懂了，但是用起来很奇怪，来看一下它的协议`<ABUnknownPersonViewControllerDelegate>`：
 ```Objective-C
 /**
@@ -307,7 +309,7 @@ shouldPerformDefaultActionForPerson:(ABRecordRef)person
 ## ABPersonViewController(详细信息的控制器)
 
 这个控制器主要是用来显示联系人详细信息，不仅如此，还可以对联系人进行编辑，先上图来看看他的样式
-<br>
+
 <div align="center"><img src="http://img.blog.csdn.net/20160512190445797" height="500"></img></div>
 
 它的的可设置属性如下:
@@ -368,7 +370,7 @@ shouldPerformDefaultActionForPerson:(ABRecordRef)person
 ## ABPeoplePickerNavigationController(选择联系人的控制器)
 
 是顾名思义的一个选择控制器，因为是导航控制器，所以这里我选择的使用模态跳，直接来看看效果图吧:
-<br>
+
 <div align="center"><img src="http://img.blog.csdn.net/20160512202812606" height="500"></img></div>
 
 它的协议方法如下`<ABPeoplePickerNavigationControllerDelegate>`(备注:楼主用的Xcode版本号为7.3.1，并且没有下载iOS7.0的模拟环境，所以只能走iOS8.0之后的协议方法)
