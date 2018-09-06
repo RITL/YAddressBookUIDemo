@@ -93,9 +93,9 @@ ABRecordSetValue(person, kABPersonLastNamePhoneticProperty,(__bridge CFStringRef
 ABRecordSetValue(person, kABPersonMiddleNamePhoneticProperty,(__bridge CFStringRef)@"Y", &error); //英文信仰缩写字母的拼音音标
 
 ```
-<br>
+
 ### 添加联系人类型属性
-```Objective-C
+```
 /*添加联系人类型属性*/
 ABRecordSetValue(person, kABPersonKindProperty, kABPersonKindPerson, &error);      //设置为个人类型
 ABRecordSetValue(person, kABPersonKindProperty, kABPersonKindOrganization, &error);//设置为公司类型
